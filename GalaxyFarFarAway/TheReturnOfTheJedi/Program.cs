@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaxyFarFarAway;
 
+[assembly: DebuggerDisplay("Sith Lord {Name} with {MidiChlorians} MidiChlorians, fights with {Weapon.Color} {Weapon.LightsaberType}", Target = typeof(SithLord))]
+[assembly: DebuggerDisplay("{Color} {LightsaberType}", Target = typeof(ForceUserWeapon), Name = "{LightsaberType}")]
+
 namespace TheReturnOfTheJedi
 {
     class Program
