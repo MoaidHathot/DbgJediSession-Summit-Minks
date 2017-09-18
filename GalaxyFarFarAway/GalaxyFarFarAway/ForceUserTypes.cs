@@ -45,11 +45,12 @@ namespace GalaxyFarFarAway
             Name = name;
         }
 
-        public override string ToString() => Name;
+        //public override string ToString() => Name;
 
     }
 
     [Serializable]
+    [DebuggerDisplay("Jedi {this.Name} with {this.MidiChlorians} MidiChlorians, fights with {Weapon.Color} {Weapon.LightsaberType}")]
     public class JediKnight : LifeForm, IForceUser
     {
         public int MidiChlorians { get; }
@@ -69,6 +70,7 @@ namespace GalaxyFarFarAway
     }
 
     [Serializable]
+    //[DebuggerTypeProxy(typeof(SithLordDisplay))]
     public class SithLord : LifeForm, IForceUser
     {
         public int MidiChlorians { get; }
@@ -88,5 +90,21 @@ namespace GalaxyFarFarAway
             Weapon = weapon;
             Abilities = abilities;
         }
+
+        //class SithLordDisplay
+        //{
+        //    private readonly SithLord _sithLord;
+
+        //    public SithLordDisplay(SithLord sithLord)
+        //    {
+        //        _sithLord = sithLord;
+        //    }
+
+        //    public int MidiChlorians => _sithLord.MidiChlorians;
+        //    public LightsaberType Lightsaber => _sithLord.Weapon.LightsaberType;
+
+        //    //[DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
+        //    public string[] Abilities => _sithLord.Abilities;
+        //}
     }
 }
