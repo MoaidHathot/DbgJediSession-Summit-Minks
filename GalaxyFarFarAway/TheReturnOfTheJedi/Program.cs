@@ -1,20 +1,16 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaxyFarFarAway;
-using StarWarsUtilities;
 
 namespace TheReturnOfTheJedi
 {
     class Program
     {
-
-        private static int _counter = 0;
-        public static int Counter => _counter++;
-
         static void Main(string[] args)
         {
             var jedies = new[]
@@ -33,11 +29,6 @@ namespace TheReturnOfTheJedi
             };
 
             var forceUsers = jedies.Concat<IForceUser>(siths).ToList();
-
-            foreach (var forceUser in forceUsers)
-            {
-                Console.WriteLine($"This is {forceUser}");
-            }
 
             Debug.WriteLine($"Press enter to quit.");
             Console.ReadLine();
