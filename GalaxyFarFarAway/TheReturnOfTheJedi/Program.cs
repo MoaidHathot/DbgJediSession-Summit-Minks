@@ -43,11 +43,10 @@ namespace TheReturnOfTheJedi
         }
         static async Task Train(IForceUser user)
         {
-            //Console.WriteLine($"Training {user}");
-            //await Task.Delay(TimeSpan.FromMilliseconds(300));
+            user.UseForce();
 
-            var academy = new StarWarsAcademy();
-            await academy.Train(user);
+            //var academy = new StarWarsAcademy();
+            //await academy.Train(user);
         }
 
     }
