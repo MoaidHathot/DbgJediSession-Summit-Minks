@@ -10,6 +10,10 @@ using GalaxyFarFarAway;
 [assembly: DebuggerDisplay("Sith Lord {Name} with {MidiChlorians} MidiChlorians, fights with {Weapon.Color} {Weapon.LightsaberType}", Target = typeof(SithLord))]
 [assembly: DebuggerDisplay("{Color} {LightsaberType}", Target = typeof(ForceUserWeapon), Name = "{LightsaberType}")]
 
+//[assembly: DebuggerVisualizer(typeof(LightsaberVisualizer), Target = typeof(ForceUserWeapon), Description = "Lightsaber Weapon")]
+//[assembly: DebuggerVisualizer(typeof(HumanVisualizer),  Target = typeof(LifeForm), Description = "LifeForm")]
+//[assembly: DebuggerVisualizer("StarWarsDebuggerVisualizers.LifeFormVisualizer, StarWarsDebuggerVisualizers", Target = typeof(LifeForm), Description = "LifeForm")]
+
 namespace TheReturnOfTheJedi
 {
     class Program
