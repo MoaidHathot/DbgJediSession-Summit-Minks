@@ -45,7 +45,7 @@ namespace GalaxyFarFarAway
             Name = name;
         }
 
-        //public override string ToString() => Name;
+        public override string ToString() => Name;
 
     }
 
