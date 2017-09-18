@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaxyFarFarAway;
+using StarWarsUtilities;
 
 namespace TheReturnOfTheJedi
 {
@@ -42,8 +43,11 @@ namespace TheReturnOfTheJedi
         }
         static async Task Train(IForceUser user)
         {
-            Console.WriteLine($"Training {user}");
-            await Task.Delay(TimeSpan.FromMilliseconds(300));
+            //Console.WriteLine($"Training {user}");
+            //await Task.Delay(TimeSpan.FromMilliseconds(300));
+
+            var academy = new StarWarsAcademy();
+            await academy.Train(user);
         }
 
     }
