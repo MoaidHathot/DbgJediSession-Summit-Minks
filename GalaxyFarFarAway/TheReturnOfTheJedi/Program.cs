@@ -29,12 +29,22 @@ namespace TheReturnOfTheJedi
 
             var forceUsers = jedies.Concat<IForceUser>(siths).ToList();
 
-
+            for (var index = 0; index < int.MaxValue; ++index)
+            {
+                foreach (var forceUser in forceUsers)
+                {
+                    Train(forceUser).Wait();
+                }
+            }
 
             Debug.WriteLine($"Press enter to quit.");
             Console.ReadLine();
         }
-
+        static async Task Train(IForceUser user)
+        {
+            Console.WriteLine($"Training {user}");
+            await Task.Delay(TimeSpan.FromMilliseconds(300));
+        }
 
     }
 }
