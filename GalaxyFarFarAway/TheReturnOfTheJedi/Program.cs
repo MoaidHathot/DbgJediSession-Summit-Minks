@@ -11,6 +11,10 @@ namespace TheReturnOfTheJedi
 {
     class Program
     {
+
+        private static int _counter = 0;
+        public static int Counter => _counter++;
+
         static void Main(string[] args)
         {
             var jedies = new[]
@@ -30,24 +34,13 @@ namespace TheReturnOfTheJedi
 
             var forceUsers = jedies.Concat<IForceUser>(siths).ToList();
 
-            for (var index = 0; index < int.MaxValue; ++index)
+            foreach (var forceUser in forceUsers)
             {
-                foreach (var forceUser in forceUsers)
-                {
-                    Train(forceUser).Wait();
-                }
+                Console.WriteLine($"This is {forceUser}");
             }
 
             Debug.WriteLine($"Press enter to quit.");
             Console.ReadLine();
         }
-        static async Task Train(IForceUser user)
-        {
-            user.UseForce();
-
-            //var academy = new StarWarsAcademy();
-            //await academy.Train(user);
-        }
-
     }
 }
