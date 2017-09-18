@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using GalaxyFarFarAway;
 
@@ -37,8 +38,50 @@ namespace TheReturnOfTheJedi
 
             var forceUsers = jedies.Concat<IForceUser>(siths).ToList();
 
+            Parallel.Invoke(forceUsers.Select<IForceUser, Action>(user => () => Show(user.MidiChlorians)).ToArray());
+
             Debug.WriteLine($"Press enter to quit.");
             Console.ReadLine();
+        }
+
+        static void Show(int x)
+        {
+            int z = x * Thread.CurrentThread.ManagedThreadId;
+            Debug.WriteLine(z);
+
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+
+            if (Thread.CurrentThread.ManagedThreadId < 10)
+            {
+                Task.Factory.StartNew(() => Show2(x)).Wait();
+            }
+            else
+            {
+                Task.Factory.StartNew(() =>
+                {
+                    Thread.Sleep(TimeSpan.FromSeconds(3));
+                });
+            }
+        }
+
+        static void Show2(int x)
+        {
+            int z = x * Thread.CurrentThread.ManagedThreadId;
+            Debug.WriteLine(z);
+
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+
+            if (Thread.CurrentThread.ManagedThreadId < 10)
+            {
+                Parallel.Invoke(() => Show(z));
+            }
+            else
+            {
+                Task.Factory.StartNew(() =>
+                {
+                    Thread.Sleep(TimeSpan.FromSeconds(3));
+                });
+            }
         }
     }
 }
