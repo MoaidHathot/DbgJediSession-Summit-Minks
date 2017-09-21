@@ -70,7 +70,7 @@ namespace GalaxyFarFarAway
     }
 
     [Serializable]
-    //[DebuggerTypeProxy(typeof(SithLordDisplay))]
+    [DebuggerTypeProxy(typeof(SithLordDisplay))]
     public class SithLord : LifeForm, IForceUser
     {
         public int MidiChlorians { get; }
@@ -91,20 +91,19 @@ namespace GalaxyFarFarAway
             Abilities = abilities;
         }
 
-        //class SithLordDisplay
-        //{
-        //    private readonly SithLord _sithLord;
+        class SithLordDisplay
+        {
+            private readonly SithLord _sithLord;
 
-        //    public SithLordDisplay(SithLord sithLord)
-        //    {
-        //        _sithLord = sithLord;
-        //    }
+            public SithLordDisplay(SithLord sithLord) => _sithLord = sithLord;
 
-        //    public int MidiChlorians => _sithLord.MidiChlorians;
-        //    public LightsaberType Lightsaber => _sithLord.Weapon.LightsaberType;
+            public string Name => _sithLord.Name;
+            public int MidiChlorians => _sithLord.MidiChlorians;
+            public LightsaberType LightsaberType => _sithLord.Weapon.LightsaberType;
+            public ConsoleColor LightsaberColor => _sithLord.Weapon.Color;
 
-        //    //[DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-        //    public string[] Abilities => _sithLord.Abilities;
-        //}
+            [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
+            public string[] Abilities => _sithLord.Abilities;
+        }
     }
 }
